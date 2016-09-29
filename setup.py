@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
 	name = 'yget',
-	version = '0.1',
+	version = '0.2',
 	description = 'An easy youtube video downloader written in python',
 	author = 'nanoman',
 	url = '',

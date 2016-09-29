@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import sys, os
+import sys, os, json, urllib
 
 
 def main():
@@ -44,15 +44,28 @@ def main():
 	
 	LINK_IO = HEAD + "=" + ID_N + "&itag=" + Q
 	LINK_IO_N = "'{0}'".format(LINK_IO)
-	CALL = "wget {0}".format(LINK_IO_N)
+	#CALL = "wget -O {0} {1}".format(videoTitle,LINK_IO_N)
 	
+	#youtube data api mechanism to get title
+	token = "AIzaSyAeSYd2Otj_Ku0yrHzGvnJq1E40r0zzfmc"
+	url = "https://www.googleapis.com/youtube/v3/videos?id="+ID+"&key="+token+"&fields=items%28snippet%28title%29%29&part=snippet"
+
+	response = urllib.urlopen(url)
+
+	try:
+		pyObj = json.loads(response.read())
+		for x in pyObj['items']:	
+			videoTitle = x["snippet"]["title"]
+			print videoTitle
+		
+	except (ValueError, KeyError, TypeError):
+		print "JSON format error"
+	
+	vi = "'{0}'".format(videoTitle)
+	CALL = "wget {1} -O {0}".format(vi,LINK_IO_N)
 	# Call downloader app (wget)
 	os.system(CALL)
 	
-	#N = LINK_IO.partition("http://s2.skyshare.ir/yo|ut|ub|e.|co|m/")[2]
-	
-	#if NAME:
-	#	os.system("mv '{0}' '{1}'".format(N,NAME))
 
 if __name__ == '__main__':
 	main()
