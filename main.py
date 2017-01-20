@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 
-import sys, os, json, urllib
+import sys
+import os
+import json
+import urllib
 
 
 def main():
@@ -40,7 +43,10 @@ def main():
 	# Link building mechanism
 	HEAD = "http://s2.skyshare.ir/yo|ut|ub|e.|co|m/|wa|tc|h?|v"
 	ID = LINK.partition("https://www.youtube.com/watch?v=")[2]
-	ID_N = "|{0}|{1}|{2}|{3}|{4}|{5}".format(ID[0]+ID[1],ID[2]+ID[3],ID[4]+ID[5],ID[6]+ID[7],ID[8]+ID[9],ID[10]) 
+	ID_N = "|{0}|{1}|{2}|{3}|{4}|{5}".format(ID[0]+ID[1],ID[2]+\
+						 ID[3],ID[4]+ID[5],\
+						 ID[6]+ID[7],ID[8]+\
+						 ID[9],ID[10]) 
 	
 	LINK_IO = HEAD + "=" + ID_N + "&itag=" + Q
 	LINK_IO_N = "'{0}'".format(LINK_IO)
@@ -48,7 +54,8 @@ def main():
 	
 	#youtube data api mechanism to get title
 	token = "AIzaSyAeSYd2Otj_Ku0yrHzGvnJq1E40r0zzfmc"
-	url = "https://www.googleapis.com/youtube/v3/videos?id="+ID+"&key="+token+"&fields=items%28snippet%28title%29%29&part=snippet"
+	url = "https://www.googleapis.com/youtube/v3/videos?id="+ID+\
+	"&key="+token+"&fields=items%28snippet%28title%29%29&part=snippet"
 
 	response = urllib.urlopen(url)
 
