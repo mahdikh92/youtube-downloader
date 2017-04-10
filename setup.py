@@ -7,7 +7,7 @@ setup(
 	author = 'nanoman',
 	url = '',
 	license = 'MIT',
-	packages = ['yget'],
-	scripts = ['main.py'],
-	entry_points = {'console_scripts':['yget=main:main',],},
+	packages = ['yget',],
+	scripts = ['main.py',],
+	entry_points = {'console_scripts':['yget=yget:main',],},
 )
