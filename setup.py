@@ -8,6 +8,6 @@ setup(
 	url = '',
 	license = 'MIT',
 	packages = ['yget',],
-	scripts = ['main.py',],
+	scripts = ['yget.py',],
 	entry_points = {'console_scripts':['yget=yget:main',],},
 )
